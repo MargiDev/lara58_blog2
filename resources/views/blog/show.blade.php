@@ -34,20 +34,21 @@
                 <article class="post-author padding-10">
                     <div class="media">
                       <div class="media-left">
-                        <a href="#">
-                          <img alt="Author 1" src="/img/author.jpg" class="media-object">
+                        <?php $author = $post->author; ?>
+                        <a href="{{ route('author', $author->slug) }}">
+                          <img width="100" height="100" alt="{{ $author->name }}" src="{{ $author->gravatar() }}" class="media-object">
                         </a>
                       </div>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="{{ route('author', $post->author->slug) }}">{{ $post->author->name }}</a></h4>
+                        <h4 class="media-heading"><a href="{{ route('author', $author->slug) }}">{{ $author->name }}</a></h4>
                         <div class="post-author-count">
-                          <a href="{{ route('author', $post->author->slug) }}">
+                          <a href="{{ route('author', $author->slug) }}">
                               <i class="fa fa-clone"></i>
-                              <?php $postCount = $post->author->posts->count(); ?>
+                              <?php $postCount = $author->posts()->published()->count(); ?>
                               {{ $postCount }} {{ str_plural('post', $postCount) }}
                           </a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad aut sunt cum, mollitia excepturi neque sint magnam minus aliquam, voluptatem, labore quis praesentium eum quae dolorum temporibus consequuntur! Non.</p>
+                        {!! $author->bio_html !!}
                       </div>
                     </div>
                 </article>
