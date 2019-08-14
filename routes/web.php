@@ -27,3 +27,5 @@ Route::get('/blog/{post}', 'BlogController@show')->name('blog.show');
 // 	'as' => 'blog.show'
 //
 // ] );
+
+Route::get('/category/{category}', 'BlogController@category')->name('category');
