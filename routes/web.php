@@ -13,4 +13,17 @@
 
 Route::get('/', 'BlogController@index')->name('blog');
 
-Route::get('/blog/{show}', 'BlogController@show')->name('blog.show');
+Route::get('/blog/{post}', 'BlogController@show')->name('blog.show');
+
+// Route::get('/', [
+// 	'uses' => 'BlogController@index',
+// 	'as' => 'blog'
+//
+// ]);
+
+// Route::get('/blog/{post}', [
+//
+// 	'uses' => 'BlogController@show',
+// 	'as' => 'blog.show'
+//
+// ] );
