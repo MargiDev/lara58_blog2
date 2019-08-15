@@ -63,7 +63,8 @@
                       <td>{{ $post->author->name }}</td>
                       <td>{{ $post->category->title }}</td>
                       <td>
-                        <abbr title="{{ $post->created_at }}">{{ $post->created_at }}</abbr>
+                        <abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr>
+                        | {!! $post->publicationLabel() !!}
 
                       </td>
                     </tr>
@@ -75,12 +76,11 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix">
               <div class="pull-left">
-
-
-
+                {{ $posts->render() }}
               </div>
               <div class="pull-right">
-
+                <?php $postCount = $posts->count(); ?>
+                {{ $postCount }} {{ str_plural('Item', $postCount) }}
               </div>
             </div>
           </div>

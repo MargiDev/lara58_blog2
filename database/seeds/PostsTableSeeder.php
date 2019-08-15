@@ -20,7 +20,7 @@ class PostsTableSeeder extends Seeder
       $posts = [];
       $faker = Factory::create();
 
-      $date = Carbon::create(2019, 8, 5, 17);
+      $date = Carbon::create(2019, 8, 10, 6);
 
       for ($i = 1; $i <= 10; $i++)
       {
