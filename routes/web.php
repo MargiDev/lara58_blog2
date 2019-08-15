@@ -21,4 +21,6 @@ Route::get('/author/{author}', 'BlogController@author')->name('author');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Backend\HomeController@index')->name('home');
+
+// Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
