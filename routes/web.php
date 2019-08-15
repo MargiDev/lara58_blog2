@@ -23,4 +23,15 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
-// Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+// Route::resource('/backend/blog', 'Backend\Blog2Controller');
+
+Route::group(['middleware' => ['auth']], function(){
+  Route::get('/backend/blog', 'Backend\BlogController@index')
+        ->name('backend.blog.index');
+  Route::match(['get', 'post'],'/backend/blog/create', 'Backend\BlogController@create')
+        ->name('backend.blog.create');
+  Route::match(['get', 'post'],'/backend/blog/edit/{id}', 'Backend\BlogController@edit')
+        ->name('backend.blog.edit');
+  Route::match(['get', 'post'],'/backend/blog/destroy/{id}', 'Backend\BlogController@destroy')
+        ->name('backend.blog.destroy');
+});
