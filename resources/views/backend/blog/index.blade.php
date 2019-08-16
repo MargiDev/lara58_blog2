@@ -32,12 +32,15 @@
             <div class="box-header">
                 <div class="pull-left">
                   <a href="{{ route('backend.blog.create') }}" class="btn btn-success">Add New</a>
-
                 </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body ">
-
+              @if( ! $posts->count() )
+                <div class="alert alert-danger">
+                    <strong>No Record Found</strong>
+                </div>
+              @else
                 <table class="table table-bordered">
                   <thead>
                     <tr>
@@ -71,7 +74,7 @@
                     @endforeach
                   </tbody>
                 </table>
-
+              @endif
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
@@ -79,7 +82,6 @@
                 {{ $posts->render() }}
               </div>
               <div class="pull-right">
-                <?php $postCount = $posts->count(); ?>
                 {{ $postCount }} {{ str_plural('Item', $postCount) }}
               </div>
             </div>
