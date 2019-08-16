@@ -30,6 +30,8 @@ Route::group(['middleware' => ['auth']], function(){
         ->name('backend.blog.index');
   Route::match(['get', 'post'],'/backend/blog/create', 'Backend\BlogController@create')
         ->name('backend.blog.create');
+  Route::match(['get', 'post'],'/backend/blog/store', 'Backend\BlogController@store')
+        ->name('backend.blog.store');
   Route::match(['get', 'post'],'/backend/blog/edit/{id}', 'Backend\BlogController@edit')
         ->name('backend.blog.edit');
   Route::match(['get', 'post'],'/backend/blog/destroy/{id}', 'Backend\BlogController@destroy')

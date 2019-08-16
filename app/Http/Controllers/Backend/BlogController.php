@@ -25,10 +25,9 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-      die('Create admin');
-
+      return view('backend.blog.create')->with(compact('post'));
     }
 
     /**
