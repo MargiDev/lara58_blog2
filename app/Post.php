@@ -8,7 +8,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
-  //protected $fillable = ['view_count'];
+  protected $fillable = ['title', 'slug', 'excerpt', 'body', 'published_at', 'category_id'];
   protected $dates = ['published_at'];
 
   public function author()
