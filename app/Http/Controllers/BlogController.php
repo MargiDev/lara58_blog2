@@ -52,11 +52,11 @@ class BlogController extends Controller
   {
     $authorName = $author->name;
 
-    $posts = $author->posts()
-                      ->with('category')
-                      ->latestFirst()
-                      ->published()
-                      ->simplePaginate($this->limit);
+    $posts      = $author->posts()
+                        ->with('category')
+                        ->latestFirst()
+                        ->published()
+                        ->simplePaginate($this->limit);
     return view('blog.index')->with(compact('posts', 'authorName'));
   }
 
