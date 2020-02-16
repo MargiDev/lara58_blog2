@@ -24,10 +24,13 @@ class Post extends Model
   public function getImageUrlAttribute($value)
   {
     $imageUrl = "";
+
     if( ! is_null($this->image)){
-      $imagePath = public_path() .'/img/'.$this->image;
+      $directory = config('cms.image.directory');
+
+      $imagePath = public_path() ."/{$directory}/".$this->image;
       if(file_exists($imagePath)){
-        $imageUrl = asset('img/'. $this->image);
+        $imageUrl = asset("{$directory}/". $this->image);
       }
     }
 
@@ -37,12 +40,14 @@ class Post extends Model
   public function getImageThumbUrlAttribute($value)
   {
     $imageUrl = "";
+    $directory = config('cms.image.directory');
+
     if( ! is_null($this->image)){
       $ext = substr(strrchr($this->image, '.'), 1);
       $thumbnail = str_replace('.'.$ext, '_thumb.'.$ext, $this->image);
-      $imagePath = public_path() .'/img/'.$thumbnail;
+      $imagePath = public_path() ."/{$directory}/".$thumbnail;
       if(file_exists($imagePath)){
-        $imageUrl = asset('img/'. $thumbnail);
+        $imageUrl = asset("{$directory}/". $thumbnail);
       }
     }
 
