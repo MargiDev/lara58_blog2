@@ -27,15 +27,18 @@
   <!-- Main content -->
   <section class="content">
       <div class="row">
-        <div class="col-xs-12">
+
+        {!! Form::model($post, [
+            'method' => 'POST',
+            'route' => 'backend.blog.store',
+            'files' => TRUE,
+            'id' => 'post-form'
+        ])!!}
+        <div class="col-xs-8">
           <div class="box">
             <!-- /.box-header -->
-            <div class="box-body ">
-              {!! Form::model($post, [
-                  'method' => 'POST',
-                  'route' => 'backend.blog.store',
-                  'files' => TRUE
-              ])!!}
+            <div class="box-body with-border">
+
 
               <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                 {!! Form::label('title') !!}
@@ -68,6 +71,23 @@
                 @endif
 
               </div>
+
+
+
+
+
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-xs-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Publish</h3>
+            </div>
+            <div class="box-body">
               <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
                 {!! Form::label('published_at', 'Publish date') !!}
                 <div class='input-group date' id='datetimepicker2'>
@@ -83,8 +103,23 @@
                 @endif
 
               </div>
+            </div>
+            <div class="box-footer clearfix">
+              <div class="pull-left">
+                <a id="draft-btn" class="btn btn-default">Save Draft</a>
+              </div>
+              <div class="pull-right">
+                {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Category</h3>
+            </div>
+            <div class="box-body text-center">
               <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
-                {!! Form::label('category_id', 'Category') !!}
                 {!! Form::select('category_id', App\Category::pluck('title', 'id') , null, ['class' => 'form-control', 'placeholder' => 'Choose category']) !!}
 
                 @if($errors->has('category_id'))
@@ -92,16 +127,24 @@
                 @endif
 
               </div>
+
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Feature Image</h3>
+            </div>
+            <div class="box-body text-center">
               <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
-                {!! Form::label('image', 'Feature Image') !!}
-                <br>
+
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                   <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
                     <img src="http://placehold.it/200x150&text=No+Image"  alt="...">
                   </div>
                   <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                   <div>
-                    <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image') !!}</span>
+                    <span class="btn btn-default btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image') !!}</span>
                     <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
                   </div>
                 </div>
@@ -113,14 +156,10 @@
 
               </div>
 
-              {!! Form::submit('Create new post', ['class' => 'btn btn-primary']) !!}
-
-              {!! Form::close() !!}
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
         </div>
+        {!! Form::close() !!}
       </div>
     <!-- ./row -->
   </section>
@@ -153,6 +192,12 @@
     $('#datetimepicker2').datetimepicker({
       format: 'YYYY-MM-DD HH:mm:ss',
       showClear: true
+    });
+
+    $('#draft-btn').click(function(e){
+      e.preventDefault();
+      $('#published_at').val("");
+      $('#post-form').submit();
     });
 
   </script>
