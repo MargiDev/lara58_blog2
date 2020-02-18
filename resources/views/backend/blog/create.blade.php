@@ -55,7 +55,7 @@
                 @endif
 
               </div>
-              <div class="form-group">
+              <div class="form-group exerpt">
                 {!! Form::label('excerpt') !!}
                 {!! Form::textarea('excerpt', null, ['class' => 'form-control']) !!}
               </div>
@@ -129,6 +129,9 @@
 
       slugInput.val(theSlug);
     });
+
+    var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
+    var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
 
   </script>
 

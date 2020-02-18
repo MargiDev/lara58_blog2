@@ -17,6 +17,11 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/backend/css/skins/_all-skins.min.css">
+
+  <!-- Simple MDE - text editor -->
+  <link rel="stylesheet" href="/backend/plugins/simplemde/simplemde.min.css">
+
+  <link rel="stylesheet" href="/backend/css/custom.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <!-- <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> -->
 
@@ -52,6 +57,9 @@
 <script src="/backend/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/backend/js/app.min.js"></script>
+
+<!-- Simple MDE  -->
+<script src="/backend/plugins/simplemde/simplemde.min.js"></script>
 @yield('script')
 </body>
 </html>
