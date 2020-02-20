@@ -34,3 +34,8 @@ Route::resource('/backend/blog', 'Backend\BlogController',[
 			'update' => 'backend.blog.update',
 		]
 ]);
+
+Route::put('/backend/blog/restore/{blog}', [
+	'uses' => 'Backend\BlogController@restore',
+	'as' => 'backend.blog.restore'
+]);
