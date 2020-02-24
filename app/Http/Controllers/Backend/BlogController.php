@@ -9,7 +9,6 @@ use Intervention\Image\Facades\Image;
 
 class BlogController extends BackendController
 {
-  protected $limit = 5;
   protected $uploadPath;
 
   public function __construct()
@@ -182,7 +181,7 @@ class BlogController extends BackendController
   {
       Post::findOrFail($id)->delete();
 
-      return redirect('/backend/blog')->with('trash-message', ['Your post moved to Trash', $id]);
+      return redirect()->back()->with('trash-message', ['Your post moved to Trash', $id]);
   }
 
   public function forceDestroy($id)

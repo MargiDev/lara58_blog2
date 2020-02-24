@@ -35,6 +35,18 @@ Route::resource('/backend/blog', 'Backend\BlogController',[
 		]
 ]);
 
+Route::resource('/backend/categories', 'Backend\CategoriesController',[
+	'names' => [
+			'index' => 'backend.categories.index',
+			'create' => 'backend.categories.create',
+      'edit' => 'backend.categories.edit',
+      'destroy' => 'backend.categories.destroy',
+      'store' => 'backend.categories.store',
+			'show' => 'backend.categories.show',
+			'update' => 'backend.categories.update',
+		]
+]);
+
 Route::put('/backend/blog/restore/{blog}', [
 	'uses' => 'Backend\BlogController@restore',
 	'as' => 'backend.blog.restore'
