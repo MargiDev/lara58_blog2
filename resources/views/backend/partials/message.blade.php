@@ -2,6 +2,12 @@
   <div class="alert alert-info">
     {{ session('message') }}
   </div>
+@elseif (session('error-message'))
+  <div class="alert alert-danger">
+    <p>
+      Sorry, You cannot delete default item!
+    </p>
+  </div>
 @elseif (session('trash-message'))
 
     <?php list($message, $postId) = session('trash-message') ?>
